@@ -1,9 +1,9 @@
-import { Module } from '@nestjs/common';
-import { DriverService } from './driver.service';
-import { DriverController } from './driver.controller';
+import { Global, Module } from '@nestjs/common';
+import { PrismaService } from './prisma.service';
 
+@Global()
 @Module({
-  controllers: [DriverController],
-  providers: [DriverService],
+  providers: [PrismaService],
+  exports: [PrismaService],
 })
-export class DriverModule {}
+export class PrismaModule {}

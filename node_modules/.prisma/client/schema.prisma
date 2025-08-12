@@ -20,6 +20,7 @@ model Driver {
   phone     String
   active    Boolean  @default(true)
   createdAt DateTime @default(now())
+  licenseNo String
   trips     Trip[]   @relation("DriverTrips") // 👈 add this line
 }
 
