@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 
 # Install app dependencies
 COPY package*.json ./
-RUN npm install
+RUN npm install --include=dev
 
 # Copy source code
 COPY . .
@@ -14,6 +14,8 @@ COPY . .
 # Generate Prisma client (build-time)
 RUN npx prisma generate
 
+# Fix executable permissions for Nest CLI globally
+run chmod +x ./mode_modules/.bin/nest
 # Build the app
 RUN npm run build
 
